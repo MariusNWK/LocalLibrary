@@ -4,8 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/http-errors": "^1.8.2",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "http-errors": "^2.0.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {

@@ -6,9 +6,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+// import createError from "http-errors";
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
+app.use((0, cookie_parser_1.default)());
+/*
+  // doesn't work for now
+  // catch 404 and forward to error handler
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    next(createError(404));
+  });
+*/
 // view engine setup
 app.set("views", path_1.default.join(__dirname, "views"));
 app.set("view engine", "pug");

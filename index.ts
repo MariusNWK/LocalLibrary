@@ -1,11 +1,23 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
+import cookieParser from "cookie-parser";
+// import createError from "http-errors";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
+
+app.use(cookieParser());
+
+/*
+  // doesn't work for now
+  // catch 404 and forward to error handler
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    next(createError(404));
+  });
+*/
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
