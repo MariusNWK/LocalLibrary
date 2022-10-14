@@ -1,8 +1,10 @@
-import express, { Express, NextFunction, Request, Response } from "express";
+import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import cookieParser from "cookie-parser";
 // import createError from "http-errors";
+
+import usersRouter from "./routes/users";
 
 dotenv.config();
 
@@ -10,6 +12,7 @@ const app: Express = express();
 const port = process.env.PORT;
 
 app.use(cookieParser());
+app.use("/users", usersRouter);
 
 /*
   // doesn't work for now

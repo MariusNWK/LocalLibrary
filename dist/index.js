@@ -8,10 +8,12 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 // import createError from "http-errors";
+const users_1 = __importDefault(require("./routes/users"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 app.use((0, cookie_parser_1.default)());
+app.use("/users", users_1.default);
 /*
   // doesn't work for now
   // catch 404 and forward to error handler
