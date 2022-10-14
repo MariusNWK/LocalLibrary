@@ -9,6 +9,7 @@ const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 // import createError from "http-errors";
 const users_1 = __importDefault(require("./routes/users"));
+require("./connect/index");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
