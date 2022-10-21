@@ -27,7 +27,8 @@ router.post("/new/:username/:age", async (req: Request, res: Response) => {
     ageSchema.parse(newUser.age);
     await newUser.save((err, post) => {
       if (err) {
-        throw err;
+        console.error(err.message);
+        return res.status(400).json({ message: err.message });
       }
       return res.status(201).json(post);
     });

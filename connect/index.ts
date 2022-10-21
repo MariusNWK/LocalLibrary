@@ -22,7 +22,7 @@ const BookSchema = new Schema({
   title: {
     type: String,
     unique: true,
-    dropDups: true
+    dropDups: true,
   },
 });
 
@@ -36,7 +36,7 @@ const UserSchema = new Schema({
     required: true,
     uppercase: true, // mettre en majuscules
     unique: true,
-    dropDups: true // supprimer les documents dupliqués
+    dropDups: true, // supprimer les documents dupliqués
   },
   age: {
     type: Number,
