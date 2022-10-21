@@ -19,7 +19,11 @@ const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
   id: Schema.Types.ObjectId,
-  title: String || undefined,
+  title: {
+    type: String,
+    unique: true,
+    dropDups: true
+  },
 });
 
 const UserSchema = new Schema({
@@ -31,7 +35,8 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     uppercase: true, // mettre en majuscules
-    dropDups: true, // supprimer les documents dupliqués
+    unique: true,
+    dropDups: true // supprimer les documents dupliqués
   },
   age: {
     type: Number,
