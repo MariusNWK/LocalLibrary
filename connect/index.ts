@@ -23,9 +23,20 @@ const BookSchema = new Schema({
 });
 
 const UserSchema = new Schema({
-  id: Schema.Types.ObjectId,
-  username: String || undefined,
-  age: Number || undefined,
+  id: {
+    type: Schema.Types.ObjectId,
+    unique: true,
+  },
+  username: {
+    type: String,
+    required: true,
+    uppercase: true, // mettre en majuscules
+    dropDups: true, // supprimer les documents dupliqués
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
 });
 
 // Compile model from schema
