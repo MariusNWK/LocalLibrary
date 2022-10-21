@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 
 import usersRouter from "./routes/users";
 import dateRouter from "./routes/date";
+import booksRouter from "./routes/books";
 
 import "./connect/index";
 
@@ -17,6 +18,7 @@ const port = process.env.PORT;
 app.use(cookieParser());
 app.use("/users", usersRouter);
 app.use("/date", dateRouter);
+app.use("/books", booksRouter);
 
 /*
   // doesn't work for now
