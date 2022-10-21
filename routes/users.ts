@@ -14,7 +14,10 @@ router.get("/cool", (req: Request, res: Response) => {
 
 router.post("/new/:username/:age", async (req: Request, res: Response) => {
   const usernameSchema = z.string();
-  const ageSchema = z.number().int({ message: "Must be an integer" }).positive({ message: "Age can't be equal or lower than 0" });
+  const ageSchema = z
+    .number()
+    .int({ message: "Must be an integer" })
+    .positive({ message: "Age can't be equal or lower than 0" });
   try {
     const newUser = new User({
       username: req.params.username,
@@ -23,6 +26,9 @@ router.post("/new/:username/:age", async (req: Request, res: Response) => {
     usernameSchema.parse(newUser.username);
     ageSchema.parse(newUser.age);
     await newUser.save((err, post) => {
+      if (err) {
+        throw err;
+      }
       return res.status(201).json(post);
     });
   } catch (err) {
