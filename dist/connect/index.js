@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.User = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const mongoDB = "mongodb://127.0.0.1/library";
 mongoose_1.default.connect(mongoDB, (err) => {
@@ -20,14 +21,20 @@ const BookSchema = new Schema({
     id: Schema.Types.ObjectId,
     title: String || undefined,
 });
+const UserSchema = new Schema({
+    id: Schema.Types.ObjectId,
+    username: String || undefined,
+    age: Number || undefined,
+});
 // Compile model from schema
-const Book = mongoose_1.default.model("library", BookSchema, "Book");
-const newBook = new Book({ title: "Alice au pays des merveilles" });
+const Book = mongoose_1.default.model("Book", BookSchema, "libraries");
+exports.User = mongoose_1.default.model("User", UserSchema, "users");
+const newBook = new Book({ title: "Game of thrones" });
 newBook.save().then(() => console.log("Book added"));
-// 1. Trouver tous les lives dont le titre est Titanic
+// 1. Trouver tous les livres dont le titre est Titanic
 // 2. Retourner pour chaque livre trouvé, son titre
 // 3. books -> tous les livres retournés avec le(s) élement(s) choisis, ici en l'occurence le titre seulement
-Book.find({ title: "Titanic" }, "title", (err, books) => {
+Book.find({ title: "Game of thrones" }, "title", (err, books) => {
     if (err) {
         console.log("Error lors de la requête `trouver les livres dont le titre est Titanic`");
     }

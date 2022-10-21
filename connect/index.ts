@@ -9,7 +9,9 @@ mongoose.connect(mongoDB, (err) => {
 const db = mongoose.connection;
 
 db.on("connected", () => console.log("database is connected successfully"));
-db.on("disconnected", () => console.log("database is disconnected successfully"));
+db.on("disconnected", () =>
+  console.log("database is disconnected successfully")
+);
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Define a schema
@@ -20,16 +22,24 @@ const BookSchema = new Schema({
   title: String || undefined,
 });
 
-// Compile model from schema
-const Book = mongoose.model("library", BookSchema, "Book");
+const UserSchema = new Schema({
+  id: Schema.Types.ObjectId,
+  username: String || undefined,
+  age: Number || undefined,
+});
 
-const newBook = new Book({ title: "Alice au pays des merveilles" });
+// Compile model from schema
+const Book = mongoose.model("Book", BookSchema, "libraries");
+
+export const User = mongoose.model("User", UserSchema, "users");
+
+const newBook = new Book({ title: "Game of thrones" });
 newBook.save().then(() => console.log("Book added"));
 
-// 1. Trouver tous les lives dont le titre est Titanic
+// 1. Trouver tous les livres dont le titre est Titanic
 // 2. Retourner pour chaque livre trouvé, son titre
 // 3. books -> tous les livres retournés avec le(s) élement(s) choisis, ici en l'occurence le titre seulement
-Book.find({ title: "Titanic" }, "title", (err, books) => {
+Book.find({ title: "Game of thrones" }, "title", (err, books) => {
   if (err) {
     console.log(
       "Error lors de la requête `trouver les livres dont le titre est Titanic`"

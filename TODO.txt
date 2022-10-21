@@ -1,0 +1,2 @@
+- lancer mongod sur gitbash
+- récup data de la database depuis le serveur grâce à mongoose

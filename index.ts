@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 // import createError from "http-errors";
 
 import usersRouter from "./routes/users";
+import dateRouter from "./routes/date";
 
 import "./connect/index";
 
@@ -15,6 +16,7 @@ const port = process.env.PORT;
 
 app.use(cookieParser());
 app.use("/users", usersRouter);
+app.use("/date", dateRouter);
 
 /*
   // doesn't work for now
@@ -33,7 +35,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
 export default app;
