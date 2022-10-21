@@ -7,7 +7,7 @@ router.get("/:title", (req, res) => {
     // 1. Trouver tous les livres dont le titre est Titanic
     // 2. Retourner pour chaque livre trouvé, son titre
     // 3. books -> tous les livres retournés avec le(s) élement(s) choisis, ici en l'occurence le titre seulement
-    connect_1.Book.find({ title: "Game of thrones" }, "title", (err, books) => {
+    connect_1.Book.find({ title: req.params.title }, "title", (err, books) => {
         if (err) {
             console.log("Error lors de la requête `trouver les livres dont le titre est Titanic`");
         }

@@ -26,8 +26,7 @@ app.use("/books", books_1.default);
     next(createError(404));
   });
 */
-// view engine setup
-app.set("views", path_1.default.join(__dirname, "views"));
+app.set("views", path_1.default.join(__dirname, "../views"));
 app.set("view engine", "pug");
 app.get("/", (req, res) => {
     res.render("index", { title: "Express" });
